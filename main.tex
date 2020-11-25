@@ -1,0 +1,343 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.3cm]{geometry}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\renewcommand{\baselinestretch}{0.74}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{bbold}
+\usepackage{relsize}
+\usepackage{multicol}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{makecell}
+\usepackage{enumitem}
+
+\newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}}
+\setitemize{noitemsep,topsep=2.5pt,parsep=2.5pt,partopsep=2.5pt}
+
+\begin{document}
+\pagenumbering{gobble}
+\section*{Formulario di probabilità e statistica}
+\setlength{\columnseprule}{0.5pt}
+\def\columnseprulecolor{\color{black}}
+
+\begin{multicols}{2}
+\setlength{\columnsep}{0.5cm}
+
+\subsection*{Insiemistica}
+Se $E$ e $F$ sono tali che $E \cap F= \varnothing $ allora $E$ e $F$ sono incompatibili o disgiunti, non si possono verificare contemporaneamente\\\\
+Leggi di De Morgan:
+\begin{itemize}
+	\item $(A \cap B)^c = A^c \cup B^c$
+	\item $(A \cup B)^c = A^c \cap B^c$
+\end{itemize}
+Disgiunzioni: siano $F, E \in \Omega$ e $\{E,E^c\}$ partizione di $\Omega$
+\begin{itemize}
+    \item Una partizione di $\Omega$ è composta da eventi a due a due disgiunti e la cui unione forma $\Omega$
+    \item $F=(F \cap E) \cup (F \cap E^c)$
+    \item $E \cup F = (E \setminus F) \cup (E \cap F) \cup (F \setminus E)$
+    \item $E \cup F = E \cup (F \setminus E)$
+\end{itemize}
+Formula di inclusione-esclusione: \\
+$P(E \cup F) = P(E) + P(F) - P(E \cap F)$\\\\
+Proprietà misura di probabilità: $P(E)=1-P(E^c)$
+\subsection*{Conteggio}
+\subsubsection*{Disposizioni}
+Dati $n$ elementi, il numero di sottinsiemi formati da $k$ elementi, in cui due sottinsiemi differiscano tra loro per almeno un elemento o per l'ordine
+\begin{itemize}
+	\item Disposizioni con ripetizione: disposizioni in cui uno stesso elemento può comparire fino a $k$ volte nello stesso gruppo: $n\cdot n\cdot n\cdot...\cdot n = n^k$.
+	\item Disposizioni senza ripetizione: disposizioni in cui in ogni sottinsieme i $k$ elementi sono tutti distinti tra loro: $ n \cdot (n-1)\cdot (n-2) \cdot ... \cdot (n-k+1)$ con $k$ fattori.
+	\item Permutazioni: disposizioni senza ripetizione in cui $n=k$: $n!$
+\end{itemize}
+\subsubsection*{Combinazioni}
+Dati $n$ elementi, il numero di sottinsiemi formati da $k$ elementi, in cui due sottinsiemi differiscano tra loro per almeno un elemento e non per l'ordine, e uno stesso elemento può comparire fino a $k$ volte nello stesso gruppo: ${n \choose k} = \frac{n!}{k!\cdot (n-k)!}$
+\subsection*{Probabilità condizionata}
+Probabilità condizionata: 
+\begin{itemize}
+	\item Formula di moltiplicazione: $P(E \cap F) = P(E|F) \cdot P(F)$
+	\item $P(E^c|F) = 1-P(E|F)$
+	\item $P(E\cup G | F) = P(E|F) + P(G|F) - P(E \cap G |F)$
+\end{itemize}
+Formula delle probabilità totali: $P(E)=P(E|F) \cdot P(F) + P(E|F^c) \cdot P(F^c)$\\\\
+Formula di Bayes: $P(F|E) = \frac{P(E|F) \cdot P(F)}{P(E)}$ 
+\subsection*{Eventi indipendenti}
+Due eventi $E,F$ si dicono indipendenti se $P(E \cap F) = P(E) \cdot P(F)$. Inoltre:
+\begin{itemize}
+	\item $\{E,F\}$ indipendenti $\iff P(E|F)=P(E) \iff P(F|E)=P(F)$
+	\item $\{E,F\}$ indipendenti $\iff \{E^c,F\}$ indipendenti $\iff \{E^c,F^c\}$ indipendenti $\iff \{E,F^c\}$ indipendenti
+\end{itemize}
+
+\subsection*{Variabili aleatorie}
+Formula valor medio: $E(X) = \sum\limits_{x_k \in \chi} x_k \cdot p_x(x_k)$\\
+Proprietà valor medio:
+\begin{itemize}
+\item $E(aX) = a\cdot E(x)$
+\item $E(X+Y) = E(X) + E(Y)$
+\item $X \geq Y \Rightarrow E(X) \geq E(Y)$
+\end{itemize}
+Valor medio:
+$E(g(X)) = \sum\limits_{x_k \in \chi} (g(x_k)\cdot p_x(x_k))$\\\\
+Varianza: $Var(X) = \sum\limits_{x_k \in \chi}((x_k-E(X))^2\cdot p_x(x_k))$\\
+
+\subsection*{Varianza}
+\textit{Sia $X$ v.a. con legge $P_X$ e alfabeto composto da elementi $x_k$. Si definisce la varianza:}
+
+$Var(X) = \mathlarger{\sum_{x_k}}[x_k - E(X)]^2 P_X(x_k)$
+
+\textit{Valgono:}
+\begin{itemize}
+\item $Var(X) = E[(X-E(X))^2] = E(X^2) - E(X)^2$
+\item $Var(X) \geq 0$, in particolare $Var(X) = 0 \Leftrightarrow X \equiv costante$
+\item $Var(aX) = a^2 Var(X)$, $a \in \mathbb{R}$
+\item $Var(X + a) = Var(X)$, $a \in \mathbb{R}$
+\item $Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y)$
+\item $X \indep Y \Longrightarrow Var(X+Y) = Var(X) + Var(Y)$
+\end{itemize}
+% covarianza
+\textbf{Def} Covarianza. \textit{Siano $X,\,Y$ v.a.. Si definisce la covarianza:}
+
+$Cov(X, Y) = E[(X - E(X))(Y - E(Y))]$
+
+\textit{Valgono:}
+\begin{itemize}
+\item $Cov(X, Y) = E(XY) - E(X)E(Y)$
+\item $Cov(Y, X) = Cov(X, Y)$
+\item $Cov(aX + b, Y) = aCov(X, Y)$
+\item $Cov(X + Y, Z) = Cov(X, Z) + Cov(Y, Z)$
+\item $X \indep Y \Longrightarrow Cov(X, Y) = 0$
+\end{itemize}
+% Variabili scorrelate
+\textbf{Def} Indipendenza. $X \indep Y$ se:
+$P_{XY}(x_i, y_j) = P_X(x_i)P_Y(y_j) \quad\forall x_i, y_j$
+\begin{itemize}
+\item $X \indep Y \Longrightarrow Var(X+Y) = Var(X) + Var(Y)$
+\item $X \indep Y \Longrightarrow Var(aX+bY+c) = a^2 Var(X) + b^2 Var(Y)$
+\end{itemize}
+\textbf{Def} V.a. scorrelate. \textit{Le v.a. $X$, $Y$ sono dette scorrelate se $Cov(X, Y) = 0$}\\
+\begin{itemize}
+    \item Indipendenza $\Longrightarrow$ Scorrelazione
+    \item Non valido il contrario
+\end{itemize}
+
+
+\subsection*{Variabili aleatorie discrete notevoli}
+\subsubsection*{Alfabeto finito: Variabili aleatorie di Bernoulli}
+\begin{itemize}
+    \item $X\sim Be(p)$ con $p \in [0, 1]$ 
+    \item Alfabeto $\mathcal{X} = \{0,1\}$
+    \item Densità discreta $p_x(1) = p$, $p_x(0) = 1-p$
+    \item $E(X) = p \qquad Var(X) = p(1-p)$
+\end{itemize}
+\subsubsection*{Alfabeto finito: Variabili aleatorie binomiali}
+Conta il numero di successi in uno schema di Bernoulli con $n$ prove indipendenti, dove la probabilità di successo è $p$
+\begin{itemize}
+    \item $X\sim Bin(n,p)$ con $n \in \mathbb{N} = \{1,2,..\}$ e $p \in [0, 1]$ 
+    \item Alfabeto $\mathcal{X} = \{0,1,..,n\}$
+    \item Densità discreta $p_x(k) ={n \choose k} \cdot p^k \cdot (1-p)^{n-k}$, $k \in \mathcal{X}$
+    \item Inoltre $E(X) = np \qquad Var(X) = n\cdot p\cdot(1-p)$
+\end{itemize}
+\subsubsection*{Alfabeto infinito: Variabili aleatorie geometriche}
+Corrisponde al numero di prove che devo effettuare per osservare il primo successo in uno schema di Bernoulli dove il numero di prove non è necessariamente predefinito e dove la probabilità di successo è $p$
+\begin{itemize}
+    \item $X\sim Ge(p)$ con $p \in (0, 1)$ 
+    \item Alfabeto $\mathcal{X} = \mathbb{N} = \{1,2,..\}$
+    \item Densità discreta $p_x(k) =(1-p)^{k-1}\cdot p$, $k \in \mathcal{X}$
+    \item Inoltre $E(X) = \frac{1}{p} \qquad Var(X) = \dfrac{1-p}{p^2}$
+\end{itemize}
+Variante: invece di guardare alla prova che corrisponde al primo successo si guarda il numero di fallimenti prima del primo successo:
+\begin{itemize}
+    \item $X'=X-1, \, X\sim Ge(p)$ con $p \in (0, 1)$ 
+    \item Densità discreta $p_x(k) =(1-p)^{k}\cdot p$, $k \in \mathcal{X}$
+    \item Inoltre $E(X) = \frac{1-p}{p} \qquad Var(X) = \dfrac{1-p}{p^2}$
+\end{itemize}
+Probabilità di lunga attesa: indica la probabilità che per il primo successo si debba aspettare più di qualcosa: $P(X > k) = (1-p)^k$ 
+\subsubsection*{Alfabeto infinito: Variabili aleatorie di Poisson}
+Una v.al. Binomiale con $n$ molto grande e $p$ molto piccolo può essere approssimata da una v.al di Poisson di parametro $\lambda = n\cdot p$.
+Euristica: $n > 100;\; p < 0.01;\; np \leq 20$
+\begin{itemize}
+    \item $X\sim Po(\lambda)$ con $\lambda > 0$ 
+    \item Alfabeto $\mathcal{X} = \mathbb{N}_0 = \{0,1,..\}$
+    \item Densità discreta $p_x(k) =e^{-\lambda}\cdot\frac{\lambda^k}{k!}$, $k \in \mathcal{X}$
+    \item Inoltre $E(X) = \lambda \qquad Var(X) = \lambda$
+\end{itemize}
+
+
+\subsection*{Vettori aleatori discreti}
+Siano X v.al con alfabeto $\mathcal{X}=\{x_1,x_2,..\}$ e Y v.al con alfabeto $ \mathcal{Y}=\{y_1,y_2,..\}$ allora per l'alfabeto $\mathcal{V}$ del vettore aleatorio $\underline{v}$ si ha $\mathcal{V}\subseteq\mathcal{X}\times\mathcal{Y}$
+\begin{itemize}
+\item Densità congiunta: $p_{XY}(x_i, y_j) = P(X=x_i, Y=y_j)$
+\item Densità marginale X: $p_X(x_i) = \sum\limits_{y_j \in \mathcal{Y}} p_{XY}(x_i,y_j)$ per ogni $x_i \in \mathcal{X}$
+\item Densità marginale Y: $p_Y(y_j) = \sum\limits_{x_i \in \mathcal{X}} p_{XY}(x_i,y_j)$ per ogni $y_j \in \mathcal{Y}$
+\item Valor medio: $E[g(X, Y)] = \sum_{x_i, y_j} g(x_i, y_j) P_{XY}(x_i, y_j)$
+\item Valor medio: $E(X, Y) = \sum_{x_i \in \mathcal{X}} \sum_{y_j \in \mathcal{Y}} x_i y_j P(X=x_i,Y=y_j)$
+\end{itemize}
+Siano $X$, $Y$ v.al. con alfabeti composti da elementi $x_i$ e $y_j$. Allora X e Y si dicono indipendenti se: $P_{XY}(x_i, y_j) = P_X(x_i)P_Y(y_j) \quad\forall x_i, y_j$
+
+
+\subsection*{Variabili aleatorie assolutamente continue}
+
+\textbf{Def}
+    Una v.a. $X$ si dice (ass.) continua si definisce associando una densit\`a $f_x : \mathbb{R}\to\mathbb{R}$ tale che:
+\begin{itemize}
+    \item $f_X(x) \geq 0$
+    \item $\int_\mathbb{R} f_X(x) dx = 1$
+\end{itemize}
+Valgono:
+\begin{itemize}
+    \item $P(X \in I = P_X(I) = \int_I f_X(x)dx$
+    \item $P_X(a) = 0\quad\forall a\in\mathbb{R}$
+\end{itemize}
+\textbf{Def} Funzione di distribuzione. \\  \textit{
+    $F_X : \mathbb{R} \to [0, 1]$ \\
+    $x \mapsto F_X(x) = P(X \leq x)$
+}\\
+\textbf{Def} Valor medio v.a.c.. \textit{
+    $E(X) = \mathlarger{\int_\mathbb{R}} x f_X(x)dx$
+}\\
+\textbf{Def} Varianza v.a.c.. \textit{
+    $Var(X) = \mathlarger{\int_\mathbb{R}} [x - E(X)]^2 f_X(x)dx$
+}\\
+\textbf{Def} Valor medio di una funzione $g(X)$, con $X$ avente densità $f_X$:.. \textit{
+    $E(g(X)) = \mathlarger{\int_\mathbb{R}} g(x) f_X(x)dx$
+}\\
+
+
+
+
+
+
+
+
+\subsection*{Variabili aleatorie continue notevoli}
+\subsubsection*{Variabili aleatorie uniformi}
+$X\sim U(a,b)$ con $a<b$ se ha:
+\begin{itemize}
+    \item densità $f_x(x) =$
+        $ \begin{cases}
+            \frac{1}{b-a} &\mbox{se } a\leq x\leq b \\
+            0 &\mbox{altrimenti}
+        \end{cases} $
+    \item distribuzione $F_x(x) =$
+        $ \begin{cases}
+            0 &\mbox{se } x<a\\
+            \frac{x-a}{b-a} &\mbox{se } a\leq x\leq b \\
+            1 &\mbox{se } x>b
+        \end{cases} $
+    \item $E(X)=\frac{b+a}{2} \qquad Var(X)=\frac{(b-a)^2}{12}$
+\end{itemize}
+    
+    
+    
+\subsubsection*{Variabili aleatorie esponenziali}
+    Descrive la durata della vita di un fenomeno privo di memoria. Valgono:
+    $X \sim Exp(\lambda)$ con densit\`a:
+    $f_X(x)$ = $ \begin{cases}
+        \lambda e^{-\lambda x} & \text{se } x \geq 0 \\
+        0 & \text{altrimenti}
+    \end{cases} $\\
+    Funzione di distribuzione:
+    $F_X(x)$ = $ \begin{cases}
+        1-e^{-\lambda x} & \text{se } x \geq 0 \\
+        0 & \text{altrimenti}
+    \end{cases} $
+    
+    \begin{itemize}
+        \item $E(X) = \frac{1}{\lambda}$
+        \item $Var(X) = \frac{1}{\lambda^2}$
+        \item $P(X > T+t \mid X > T) = P(X > t)$
+    \end{itemize}
+
+
+\subsubsection*{Variabili aleatorie gaussiane(o normali)}
+    $X \sim N(\mu, \sigma^2)$ e densità:
+    $f_X(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left[-\frac{(x-\mu)^2}{2\sigma^2}\right]$
+    $\sigma^2$=Varianza\\
+    $\sigma$=Deviazione standard\\
+    \begin{itemize}
+    \item $E(X) = \mu$
+    \item $Var(X) = \sigma^2$
+    \item $P(Z \leq x) = \Phi(x)$
+    \item $P(|Z| \leq x) = 2\Phi(x)-1$
+    \item $P(Z \geq x) = 1-\Phi(x) = \Phi(-x)$
+    \item $P(|Z| \geq x) = 2(1-\Phi(x))=2\Phi(-x)$
+    \item $P(x \le Z \le y) = \Phi(y)-\Phi(x)$
+    \item $P(\mu - 4\sigma \leq X \leq \mu + 4\sigma) \approx 1$
+    \end{itemize}    
+\textbf{Def} Gaussiana standard. \textit{ 
+    $X \sim N(0,1)$.
+}\\
+\textbf{Prop} Trasformazioni affini di v.a. normali. \textit{
+    Sia $X \sim N(\mu, \sigma^2)$ e $Y=aX+b$ allora
+    $Y \sim N(a\mu+b, a^2\sigma^2)$\\
+    quindi se $X \sim N(\mu, \sigma^2) \Rightarrow$
+    $Z = \frac{X-\mu}{\sigma} \sim N(0, 1)$
+}\\
+Se due v.al. $X,Y$ sono indipendenti e $X \sim ~N(\mu_1, \sigma_1^2), \ Y \sim ~N(\mu_2, \sigma_2^2), \ Z=X+Y$ allora:\\
+$Z \sim N(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2)$
+
+\subsection*{Teoremi Limite}
+
+\textbf{Def} Legge dei grandi numeri (LLN). \textit{
+Siano $X_1, \dots, X_n$ v.a. i.i.d. con media finita. Allora
+$\overline{X_n} \to E(X_1)$
+}\\\\
+\textbf{Def} Metodo Monte Carlo. \textit{
+$\mathcal{I} = \int^b_a f(x)dx \quad b>a$\\
+$\mathcal{I} = (b-a)\int^b_a\frac{f(x)}{b-a} dx = (b-a)E(f(x))$
+con $X = U(a, b)$
+}\\\\
+\textbf{Def} Teorema centrale del limite (CLT). \textit{
+Siano $X_1, \dots, X_n$ v.a. i.i.d. con $E(X_1) = \mu$, $Var(X_1) = \sigma^2$. Allora:\\
+  $\sqrt{n} \left( \frac{\overline{X_n}-\mu}{\sigma} \right) \to N(0,1)$ \\
+  $\frac{\sum\limits_{i=1}^n (X_i - \mu)}{\sigma\sqrt{n}} \to N(0,1)$ \\
+  $\sqrt{n}(\overline{X_n}-\mu) \to N(0,\sigma^2)$
+}
+
+\subsection*{Statistica Descrittiva}
+
+\subsubsection*{Indici di posizione}
+Media campionaria:
+$\overline{x}=\frac{1}{n} \sum_{i=1}^n x_i$\\
+Mediana:
+$M=$ 
+$\begin{cases}
+    x_{(n+1)/2} & \text{se } n \text{ dispari} \\
+    \frac{1}{2} \left( x_{n/2} + x_{(n/2)+1}\right) & \text{se } n \text{ pari} \\
+\end{cases} $ \\
+Moda: dato a cui corrisponde la frequenza assoluta massima
+
+\subsubsection*{Indici di dispersione}
+
+Varianza campionaria:
+$s^2=\dfrac{1}{n-1} \sum_{i=1}^n (x_i-\overline{x})^2$\\
+$p$-esimo quantile ($0<p<1$): \\ $q_p=$
+$\begin{cases}
+    x_{\lfloor np \rfloor + 1 } & \text{se } np \text{ non è intero} \\
+    \frac{1}{2} \left( x_{np} + x_{np + 1}\right) & \text{se } np \text{ è intero} \\
+\end{cases} $ \\
+con $n$ ampiezza del campione
+\begin{itemize}
+    \item 25-esimo percentile=$Q_1$=primo quartile = $q_{0,25}$
+    \item 50-esimo percentile=$Q_2$=secondo quartile (mediana) = $q_{0,5}$
+    \item 75-esimo percentile=$Q_3$=terzo quartile = $q_{0,75}$
+\end{itemize}
+Differenza interquantile: $IQR=Q_3-Q_1$\\
+Boxplot: 
+\begin{itemize}
+    \item $IQR$
+    \item Limite del baffo inferiore $= L = Q_1-1.5 \cdot  IQR$
+    \item Limite del baffo superiore $= U = Q_3+1.5 \cdot  IQR$
+    \item Outliers: dati che rimangono fuori dai baffi
+\end{itemize}
+ 
+\subsection*{Statistica Inferenziale}
+
+\subsubsection*{Stimatori}
+Uno stimatore $T$ si dice corretto/non distorto se $E_{\underline{\theta}} (T) = \tau (\underline{\theta})$\\
+Uno stimatore $T$ si dice consistente se $\text{Var}_{\underline{\theta}}(T) \overset{n\to +\infty}{\longrightarrow 0}$
+
+
+\end{multicols}
+\end{document}
