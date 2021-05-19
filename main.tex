@@ -168,10 +168,10 @@ Euristica: $n > 100;\; p < 0.01;\; np \leq 20$
 Siano X v.al con alfabeto $\mathcal{X}=\{x_1,x_2,..\}$ e Y v.al con alfabeto $ \mathcal{Y}=\{y_1,y_2,..\}$ allora per l'alfabeto $\mathcal{V}$ del vettore aleatorio $\underline{v}$ si ha $\mathcal{V}\subseteq\mathcal{X}\times\mathcal{Y}$
 \begin{itemize}
 \item Densità congiunta: $p_{XY}(x_i, y_j) = P(X=x_i, Y=y_j)$
-\item Densità marginale X: $p_X(x_i) = \sum\limits_{y_j \in \mathcal{Y}} p_{XY}(x_i,y_j)$ per ogni $x_i \in \mathcal{X}$
-\item Densità marginale Y: $p_Y(y_j) = \sum\limits_{x_i \in \mathcal{X}} p_{XY}(x_i,y_j)$ per ogni $y_j \in \mathcal{Y}$
-\item Valor medio: $E[g(X, Y)] = \sum_{x_i, y_j} g(x_i, y_j) P_{XY}(x_i, y_j)$
-\item Valor medio: $E(X, Y) = \sum_{x_i \in \mathcal{X}} \sum_{y_j \in \mathcal{Y}} x_i y_j P(X=x_i,Y=y_j)$
+\item Densità marginale X: $p_X(x_i) = \sum\limits_{y_j \in \mathcal{Y}} p_{XY}(x_i,y_j) \; \forall x_i \in \mathcal{X}$
+\item Densità marginale Y: $p_Y(y_j) = \sum\limits_{x_i \in \mathcal{X}} p_{XY}(x_i,y_j) \; \forall y_j \in \mathcal{Y}$
+\item Valor medio: $E[g(X, Y)] = \sum\limits_{x_i, y_j} g(x_i, y_j) P_{XY}(x_i, y_j)$
+\item Valor medio: $E(X, Y) = \sum\limits_{x_i \in \mathcal{X}} \sum\limits_{y_j \in \mathcal{Y}} x_i y_j P(X=x_i,Y=y_j)$
 \end{itemize}
 Siano $X$, $Y$ v.al. con alfabeti composti da elementi $x_i$ e $y_j$. Allora X e Y si dicono indipendenti se: $P_{XY}(x_i, y_j) = P_X(x_i)P_Y(y_j) \quad\forall x_i, y_j$
 
