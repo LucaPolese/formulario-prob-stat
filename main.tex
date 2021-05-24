@@ -45,14 +45,14 @@ $P(E \cup F) = P(E) + P(F) - P(E \cap F)$\\\\
 Proprietà misura di probabilità: $P(E)=1-P(E^c)$
 \subsection*{Conteggio}
 \subsubsection*{Disposizioni}
-Dati $n$ elementi, il numero di sottinsiemi formati da $k$ elementi, in cui due sottinsiemi differiscano tra loro per almeno un elemento o per l'ordine
+Dati $n$ elementi, il numero di sottoinsiemi formati da $k$ elementi, in cui due sottoinsiemi differiscano tra loro per almeno un elemento o per l'ordine
 \begin{itemize}
 	\item Disposizioni con ripetizione: disposizioni in cui uno stesso elemento può comparire fino a $k$ volte nello stesso gruppo: $n\cdot n\cdot n\cdot...\cdot n = n^k$.
-	\item Disposizioni senza ripetizione: disposizioni in cui in ogni sottinsieme i $k$ elementi sono tutti distinti tra loro: $ n \cdot (n-1)\cdot (n-2) \cdot ... \cdot (n-k+1)$ con $k$ fattori.
+	\item Disposizioni senza ripetizione: disposizioni in cui in ogni sottoinsieme i $k$ elementi sono tutti distinti tra loro: $ n \cdot (n-1)\cdot (n-2) \cdot ... \cdot (n-k+1)$ con $k$ fattori.
 	\item Permutazioni: disposizioni senza ripetizione in cui $n=k$: $n!$
 \end{itemize}
 \subsubsection*{Combinazioni}
-Dati $n$ elementi, il numero di sottinsiemi formati da $k$ elementi, in cui due sottinsiemi differiscano tra loro per almeno un elemento e non per l'ordine, e uno stesso elemento può comparire fino a $k$ volte nello stesso gruppo: ${n \choose k} = \frac{n!}{k!\cdot (n-k)!}$
+Dati $n$ elementi, il numero di sottoinsiemi formati da $k$ elementi, in cui due sottoinsiemi differiscano tra loro per almeno un elemento e non per l'ordine, e uno stesso elemento può comparire fino a $k$ volte nello stesso gruppo: $\binom{n}{k} = \frac{n!}{k!\cdot (n-k)!}$
 \subsection*{Probabilità condizionata}
 Probabilità condizionata: 
 \begin{itemize}
@@ -135,7 +135,7 @@ Conta il numero di successi in uno schema di Bernoulli con $n$ prove indipendent
 \begin{itemize}
     \item $X\sim Bin(n,p)$ con $n \in \mathbb{N} = \{1,2,..\}$ e $p \in [0, 1]$ 
     \item Alfabeto $\mathcal{X} = \{0,1,..,n\}$
-    \item Densità discreta $p_x(k) ={n \choose k} \cdot p^k \cdot (1-p)^{n-k}$, $k \in \mathcal{X}$
+    \item Densità discreta $p_x(k) =\binom{n}{k} \cdot p^k \cdot (1-p)^{n-k}$, $k \in \mathcal{X}$
     \item Inoltre $E(X) = np \qquad Var(X) = n\cdot p\cdot(1-p)$
 \end{itemize}
 \subsubsection*{Alfabeto infinito: Variabili aleatorie geometriche}
@@ -181,18 +181,21 @@ Siano $X$, $Y$ v.al. con alfabeti composti da elementi $x_i$ e $y_j$. Allora X e
 \textbf{Def}
     Una v.a. $X$ si dice (ass.) continua si definisce associando una densit\`a $f_x : \mathbb{R}\to\mathbb{R}$ tale che:
 \begin{itemize}
-    \item $f_X(x) \geq 0$
-    \item $\int_\mathbb{R} f_X(x) dx = 1$
+    \item $f_X(x) \geq 0 \qquad$ (positività)
+    \item $\int_\mathbb{R} f_X(x) dx = 1 \qquad$ (normalizzazione)
 \end{itemize}
 Valgono:
 \begin{itemize}
-    \item $P(X \in I = P_X(I) = \int_I f_X(x)dx$
-    \item $P_X(a) = 0\quad\forall a\in\mathbb{R}$
+    \item $P(X \in [a,b]) = \mathlarger{\int_{a}^{b}} f_X(x)dx$
+    \item $P(X = a) = 0\quad\forall a\in\mathbb{R}$
 \end{itemize}
-\textbf{Def} Funzione di distribuzione. \\  \textit{
-    $F_X : \mathbb{R} \to [0, 1]$ \\
-    $x \mapsto F_X(x) = P(X \leq x)$
-}\\
+\textbf{Def} Funzione di distribuzione. \\
+\[
+    \begin{align*}
+        F_X:    &\mathbb{R} \to [0, 1] \\
+                &x \mapsto F_X(x) = P(X \leq x)
+    \end{align*}
+\]
 \textbf{Def} Valor medio v.a.c.. \textit{
     $E(X) = \mathlarger{\int_\mathbb{R}} x f_X(x)dx$
 }\\
